@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>cars</title>
+  <style>
+    .popup {
+      width: 290px;
+      box-shadow: 0px 0px 5px #ccc;
+      background: linear-gradient(180deg, green, blue, yellow);
+      position: absolute;
+      border-radius: 15px;
+      top: 50%;
+      left: 50%;
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1.25);
+      height: 80vh;
+      text-align: center;
+      align-items: center;
+      display: block;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    .popup:hover {
+      padding: 10px;
+      background: linear-gradient(180deg, blue, yellow, green);
+      transition: .3s;
+    }
+    .icon {
+      width: 50px;
+      height: auto;
+      border: #69970D 2px;
+    }
+    form{
+      background-color: aliceblue;
+    }
+  </style>
+</head>
+<body>
+  <div class="popup" id="cars">
+    <div id="hours-container">
+    </div>
+    <img src="img/ate.png" class="icon" alt="">
+    <span>tora igihe ushaka guhagurukira muri gare</span>
+  </div>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const data = JSON.parse(urlParams.get("data"));
+    const namesContainer = document.querySelector("#hours-container");
+    data.forEach(function(hour, index) {
+
+      const button = document.createElement("button");
+      let form=document.createElement("form")
+      form.setAttribute("method","post");
+      form.setAttribute("action","/getemail");
+      button.setAttribute("type", "submit");
+      button.textContent = hour;
+      button.setAttribute("id", `hour`);
+      button.addEventListener("click", function() {
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/sendhour", true);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.send(JSON.stringify({ value: this.innerHTML }));
+      });
+      form.appendChild(button)
+      namesContainer.appendChild(form);
+    });
+
+  </script>
+</body>
+</html>
+

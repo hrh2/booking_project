@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>my way</title>
+    <style>
+        .popup{
+            width: 290px;
+            box-shadow: 0px 0px 5px #ccc;
+            background: linear-gradient(180deg, green, blue, yellow);
+            position: absolute;
+            border-radius: 15px;
+            top: 50%;
+            left: 50%;
+            opacity: 1;
+            transform: translate(-50%,-50%) scale(1.25);
+            height: 80vh;
+            text-align: center;
+            display: none;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .popup:hover{
+            padding: 10px;
+            background: linear-gradient(180deg, blue, yellow, green);
+            transition: .3s;
+        }
+    </style>
+</head>
+<body>
+    <div class="popup" id="popup">
+        <button class="close" onclick="closePopup()">&#10006;</button>
+        <h2><span>Tora aho ushaka kwerekeza</span></h2>
+        <div id="ways">
+
+        </div>
+    </div>
+    <script>
+        function closePopup() {
+          document.getElementById("popup").style.display = "none";
+        }
+      
+        // Make an AJAX request to fetch data from the server
+        const xhr = new XMLHttpRequest();
+        xhr.open('post', '/data');
+        xhr.onload = function() {
+          if (xhr.status === 200) {
+            // Parse the JSON data
+            const data = JSON.parse(xhr.responseText);
+            console.log(data);
+      
+            // Loop through the data and create a new element for each row
+            const waysDiv = document.getElementById("ways");
+            for (let i = 0; i < data.length; i++) {
+              let button = document.createElement("button");
+              button.setAttribute('id', 'btn');
+              button.setAttribute('value', `${data[i].ways}`);
+              button.innerHTML = data[i].ways;
+              waysDiv.appendChild(button);
+      
+              // Add a click event listener to each button
+              button.addEventListener("click", function() {
+                const buttonValue = this.value;
+      
+                // Make an AJAX request to get names when the button is clicked
+                const xhr = new XMLHttpRequest();
+                xhr.open("post", "/get-names");
+                xhr.onload = function() {
+                  if (xhr.status === 200) {
+                    const names = JSON.parse(xhr.responseText);
+                    window.location.href = "/cars.html?data=" + JSON.stringify(names);
+                  }
+                };
+                xhr.send();
+      
+                // Send a GET request to get the button value
+                const xhr2 = new XMLHttpRequest();
+                xhr2.open("post", "/getValue?value=" + buttonValue, true);
+                xhr2.send();
+              });
+            }
+      
+            // Show the popup
+            document.getElementById("popup").style.display = "block";
+          }
+        };
+        xhr.send();
+      </script>
+      
+</body>
+</html>

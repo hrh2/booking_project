@@ -1,0 +1,149 @@
+ <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://kit.fontawesome.com/c2e0467a67.css" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/c2e0467a67.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="syle.css">
+    <style>
+        *{
+            margin: 0%;
+            padding: 0%;
+        }
+        .body{
+            height: 100vh;
+            background-color: aliceblue;
+        }
+        .first_tab{
+            width: 100%;
+            height: auto;
+            display: flex;
+            position: fixed;
+            top: 0%;
+            
+        }
+        .menu{
+            position: fixed;
+            left:56%;
+            width: 40%;
+            height: 8vh;
+            background-color: rgb(255, 255, 255);
+            border-radius: 0em 0em 0em 50em;
+            padding: 2em;
+            color: brown;
+            box-shadow: .1em 0.1em 0.1em #000000;
+        }
+        .menu a{
+
+            padding: 0.3em .7em;
+            margin: 0.5em;
+            border-radius: 0.4em;
+            text-decoration: none;
+            color: #000000;
+            font-weight: 600;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            border:0.1em solid #b3ff00;
+            transition: .3s;
+          
+        }
+  
+        .profile{
+            margin: 3em;
+            width: 7vw;
+            height: 6vh;
+            padding: .5em;
+            background-color: #fff;
+            border-radius: 0.4em;
+            box-shadow:.1em  0.1em 0.1em 0.1em #000000;
+        }
+        .content{
+          width: 40%;
+          height: auto;
+          background-color: #fff;
+          padding: 2em;
+          border-radius: 2em;
+          margin-left: 30%;
+          margin-top: 20vh;
+          box-shadow:.1em  0.1em 0.1em 0.1em #000000;
+          display: flex;
+        }
+        .content #gare{
+            padding: .6em 1em;
+            margin: 10%;
+            border: .2em solid #b3ff00;
+            border-radius: 1em;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-weight: 600;
+            font-size: medium;
+        }
+        #gare:hover,a:hover{
+            color: #fff;
+            background-image: linear-gradient(to right, white,#b3ff00,white);
+            text-shadow: 0.1em 0.1em 0.1em #000000;
+            box-shadow:.1em  0.1em 0.1em 0.1em #000000;
+           }
+        .content p,h3{
+            margin: 1em;
+            font-family:Arial, Helvetica, sans-serif ;
+            color: #000070;
+            text-shadow:.1em .1em .1em #000070;
+        }
+        .content form{
+            background-color: #fff;
+            width: 30%;
+        }
+     footer{
+        width: 100%;
+        height: 10vh;
+        padding: 2em;
+        background-color: #000000;
+        border-radius: 1em 1em 0em 0em;
+        position: fixed;
+        bottom: 0%;
+     }   
+
+    </style>
+    
+    <title>LuxeBus</title>
+</head>
+<body class="body">
+<div class="first_tab"> 
+    <div class="menu">
+        <a href="" class="menu_button">Drivers</a>
+        <a href="" class="menu_button">Taxi</a>
+        <a href="" class="menu_button">About us</a>
+    </div>
+</div>
+    <div class="profile">
+        <a href="" title="profile"><span></span></a>
+    </div>
+    <div class="content">
+      <div>
+        <form action="/getways" method="post"><button type="submit" value="musanze_gare" id="gare">Musanze</button></form>
+
+        <form action="/getways" method="post"><button type="submit" value="mukamira_gare" id="gare">Mukamira</button></form>
+      </div>
+      <div>
+      <h3>Select Station</h3>
+      <p> click here </p>
+      <p>Ariko utore bitewe naho ushaka gufatira IMODOKA</p>
+      </div>
+    </div>
+
+<footer>
+
+</footer>
+</body>
+
+<script>
+    document.getElementById("gare").addEventListener("click", function() {
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/sendButtonValue", true);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.send(JSON.stringify({ value: this.innerHTML }));
+      });
+</script>
+</html>

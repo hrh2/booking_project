@@ -3,6 +3,9 @@ const multer = require('multer');
 const mysql = require('mysql2');
 const path = require('path');
 const nodemailer = require('nodemailer');
+const dotenv = require('dotenv');
+dotenv.config();
+
 const { json } = require('body-parser');
 
 let PORT=process.env.PORT || 3000;
@@ -22,8 +25,9 @@ let email;
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: '',
-  database: ''
+  password: `${process.env.DB_PASSWORD}`,
+
+  database: `${process.env.DB_NAME}`,
 });
 
 // Use express middleware to parse JSON and URL-encoded data

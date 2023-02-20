@@ -14,6 +14,7 @@
       height: auto;
       background-color: aliceblue;
   }
+
   .first_tab{
       width: 100%;
       height: auto;
@@ -46,16 +47,28 @@
       transition: .3s;
     
   }
-
   .profile{
-      margin: 3em;
-      width: 7vw;
-      height: 6vh;
-      padding: .5em;
-      background-color: #fff;
-      border-radius: 0.4em;
-      box-shadow:.1em  0.1em 0.1em 0.1em #000000;
-  }
+    margin: 3em;
+    width: 7vw;
+    height: 6vh;
+    padding: .1em 1.2em;       
+    background-color: #fff;
+    border-radius: 0.4em;
+    box-shadow:.1em  0.1em 0.1em 0.1em #000000;
+}
+
+  .profile h1{
+    text-shadow: #000000 0.1em .1em .1em;
+    font-weight: bolder;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: center;
+    font-size: 100%;
+    color: hsl(63, 100%, 50%);
+    margin-top: 7%;
+}
+.profile span{
+    color: rgb(214, 7, 214);
+}
   .content{
     width: 40%;
     height: auto;
@@ -109,21 +122,22 @@ margin-top: 2%;
 <body>
   <div class="first_tab"> 
     <div class="menu">
-        <a href="" class="menu_button">Drivers</a>
-        <a href="" class="menu_button">Taxi</a>
-        <a href="" class="menu_button">About us</a>
+        <a href="" class="menu_button">HOME</a>
+        <a href="" class="menu_button">Renting</a>
     </div>
 </div>
-    <div class="profile">
-        <a href="" title="profile"><span></span></a>
-    </div>
+<div class="profile">
+  <h1> AUTO<span>LINK</span></h1>
+</div>
     <div class="content">
       <div id="hours-container">
 
       </div>
       <div class="div">
         <img src="img/ate.png" class="icon" alt="">
-        <p>tora igihe ushaka guhagurukira muri gare</p>
+        <p>Choose the time u want to start your journey</p>
+        <p>the time you choose correspond to the car you will go</p>
+        <p>make  sure to be there on time before the car go in</p>
       </div>
       </div>
    

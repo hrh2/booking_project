@@ -14,7 +14,7 @@
             padding: 0%;
         }
         .body{
-            height: 100vh;
+            height: auto;
             background-color: aliceblue;
         }
         .first_tab{
@@ -37,7 +37,7 @@
             box-shadow: .1em 0.1em 0.1em #000000;
         }
         .menu a{
-
+    
             padding: 0.3em .7em;
             margin: 0.5em;
             border-radius: 0.4em;
@@ -49,15 +49,27 @@
             transition: .3s;
           
         }
-  
+    
         .profile{
             margin: 3em;
             width: 7vw;
             height: 6vh;
-            padding: .5em;
+            padding: .1em 1.2em;       
             background-color: #fff;
             border-radius: 0.4em;
             box-shadow:.1em  0.1em 0.1em 0.1em #000000;
+        }
+        .profile h1{
+            text-shadow: #000000 0.1em .1em .1em;
+            font-weight: bolder;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            text-align: center;
+            font-size: 100%;
+            color: hsl(63, 100%, 50%);
+            margin-top: 7%;
+        }
+       .profile span{
+            color: rgb(214, 7, 214);
         }
         .content{
           width: 40%;
@@ -95,15 +107,19 @@
             background-color: #fff;
             width: 30%;
         }
-     footer{
-        width: 100%;
+     .footer{
+      margin-top: 2%;
+        width: 93%;
         height: 10vh;
         padding: 2em;
         background-color: #000000;
         border-radius: 1em 1em 0em 0em;
-        position: fixed;
         bottom: 0%;
-     }   
+     }  
+     .bookingdiv{
+        display: block;
+     }
+      
 
     </style>
     
@@ -114,13 +130,17 @@
     <div class="menu">
         <a href="" class="menu_button">Drivers</a>
         <a href="" class="menu_button">Taxi</a>
+        <a href="" class="menu_button">Renting</a>
         <a href="" class="menu_button">About us</a>
     </div>
 </div>
     <div class="profile">
-        <a href="" title="profile"><span></span></a>
+       <h1> AUTO<span>LINK</span></h1>
     </div>
     <div class="content">
+        <div class="bookingdiv">
+            <h1>Booking <span>in</span></h1>
+        </div>
       <div>
         <form action="/getways" method="post"><button type="submit" value="musanze_gare" id="gare">Musanze</button></form>
 
@@ -128,14 +148,14 @@
       </div>
       <div>
       <h3>Select Station</h3>
-      <p> click here </p>
-      <p>Ariko utore bitewe naho ushaka gufatira IMODOKA</p>
+      <p>Make sure you Select a station </p>
+      <p> in which you will start you Journey </p>
       </div>
     </div>
 
-<footer>
-
-</footer>
+<div class="footer">
+    
+</div>
 </body>
 
 <script>
